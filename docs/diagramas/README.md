@@ -4,5 +4,5 @@ Coloque aqui todas as versões do seu diagrama de classes. Cada versão deve com
 ![Diagrama de classes](diagramaDeClasses.png)
 
 ## Versão 02
-![Diagrama de classes](diagramaDeClasses v.2.png)
+![Diagrama de classes](diagramadDeClassesv2.png)
 
