@@ -10,13 +10,12 @@ public class Aluguel {
     private String dataTerminoDoAluguel;
     private float valorTotal;
 
-    public Aluguel(Cliente cliente, Equipamento equipamento, String dataInicioDoAluguel, String dataTerminoDoAluguel, float valorTotal) {
+    public Aluguel(Cliente cliente, Equipamento equipamento, String dataInicioDoAluguel, String dataTerminoDoAluguel) {
         this.idAluguel = proximoId;
         this.cliente = cliente;
         this.equipamento = equipamento;
         this.dataInicioDoAluguel = dataInicioDoAluguel;
         this.dataTerminoDoAluguel = dataTerminoDoAluguel;
-        this.valorTotal = valorTotal;
         proximoId++;
     }
 
