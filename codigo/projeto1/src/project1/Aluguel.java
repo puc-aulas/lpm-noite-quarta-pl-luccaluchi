@@ -3,8 +3,8 @@ package project1;
 import java.util.List;
 
 public class Aluguel {
-    
-    private static int proximoId = 1;
+
+    private static int proximoId = 0;
     private int idAluguel;
     private Cliente cliente;
     private Equipamento equipamento;
@@ -12,19 +12,17 @@ public class Aluguel {
     private String dataTerminoDoAluguel;
     private double valorTotal;
 
-    public Aluguel(int id, Cliente cliente, Equipamento equipamento, String dataInicioDoAluguel, String dataTerminoDoAluguel) {
-        this.idAluguel = id;
+    public Aluguel(Cliente cliente, Equipamento equipamento, String dataInicioDoAluguel, String dataTerminoDoAluguel) {
+        this.idAluguel = proximoId++;
         this.cliente = cliente;
         this.equipamento = equipamento;
         this.dataInicioDoAluguel = dataInicioDoAluguel;
         this.dataTerminoDoAluguel = dataTerminoDoAluguel;
-        proximoId++;
     }
 
-    public double calcularValorDoAluguel(List<Equipamento> equipamentos, int id){
-
-        for(Equipamento equipamento : equipamentos)
-            if( equipamento.getCodigo() == id ){
+    public double calcularValorDoAluguel(List<Equipamento> equipamentos, int id) {
+        for (Equipamento equipamento : equipamentos)
+            if (equipamento.getCodigo() == id) {
                 return equipamento.getValorDiaria();
             }
         return 0;
