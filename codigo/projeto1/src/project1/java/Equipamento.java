@@ -1,4 +1,4 @@
-package project1;
+package project1.java;
 
 public class Equipamento {
     private static int proximoCodigo = 0;
@@ -6,19 +6,18 @@ public class Equipamento {
     private String tipo;
     private String descricao;
     private double valorDiaria;
-    private int quantidade;
+    private static int quantidade;
 
-    public Equipamento(int codigo, String tipo, String descricao, double valorDiaria, int quantidade) {
-        this.codigo = codigo;
+    public Equipamento(String tipo, String descricao, double valorDiaria, int quant) {
         this.tipo = tipo;
         this.descricao = descricao;
         this.valorDiaria = valorDiaria;
-        this.quantidade = quantidade;
+        quantidade = quant;
         this.codigo = proximoCodigo++;
     }
 
     public int getCodigo() {
-        return codigo;
+        return this.codigo;
     }
 
     public void setCodigo(int codigo) {
@@ -26,7 +25,7 @@ public class Equipamento {
     }
 
     public String getTipo() {
-        return tipo;
+        return this.tipo;
     }
 
     public void setTipo(String tipo) {
@@ -34,7 +33,7 @@ public class Equipamento {
     }
 
     public String getDescricao() {
-        return descricao;
+        return this.descricao;
     }
 
     public void setDescricao(String descricao) {
@@ -42,7 +41,7 @@ public class Equipamento {
     }
 
     public double getValorDiaria() {
-        return valorDiaria;
+        return this.valorDiaria;
     }
 
     public void setValorDiaria(float valorDiaria) {
@@ -53,7 +52,7 @@ public class Equipamento {
         return quantidade;
     }
 
-    public void setQuantidade(int quantidade) {
-        this.quantidade = quantidade;
+    public void setQuantidade(int qnt) {
+        quantidade = qnt;
     }
 }

@@ -1,9 +1,8 @@
-package project1;
+package project1.java;
 
 import java.util.List;
 
 public class Aluguel {
-
     private static int proximoId = 0;
     private int idAluguel;
     private Cliente cliente;
@@ -21,9 +20,9 @@ public class Aluguel {
     }
 
     public double calcularValorDoAluguel(List<Equipamento> equipamentos, int id) {
-        for (Equipamento equipamento : equipamentos)
-            if (equipamento.getCodigo() == id) {
-                return equipamento.getValorDiaria();
+        for (Equipamento eqp : equipamentos)
+            if (eqp.getCodigo() == id) {
+                return eqp.getValorDiaria();
             }
         return 0;
     }
