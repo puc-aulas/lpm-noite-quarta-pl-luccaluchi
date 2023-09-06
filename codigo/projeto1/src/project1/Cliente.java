@@ -12,7 +12,7 @@ public class Cliente {
 
     public Cliente(int idCliente) {
         this.idCliente = idCliente;
-        alugueisFeitos = new ArrayList<>();
+        List<Aluguel> alugueisFeitos = new ArrayList<>();
     }
 
     public int getIdCliente() {

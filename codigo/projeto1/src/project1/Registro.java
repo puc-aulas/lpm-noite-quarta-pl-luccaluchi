@@ -28,15 +28,24 @@ public class Registro {
             int escolha = s.nextInt();
 
             switch (escolha) {
-                case 1 -> registro.getAlugueisPorCliente();
-                case 2 -> registro.alugueis.add(registro.alugarEquipamento());
-                case 3 -> registro.clientes.add(registro.addCliente());
-                case 4 -> registro.equipamentos.add(registro.addEquipamento());
-                case 5 -> {
+                case 1:
+                    registro.getAlugueisPorCliente();
+                    break;
+                case 2:
+                    registro.alugueis.add(registro.alugarEquipamento());
+                    break;
+                case 3:
+                    registro.clientes.add(registro.addCliente());
+                    break;
+                case 4:
+                    registro.equipamentos.add(registro.addEquipamento());
+                    break;
+                case 5:
                     System.out.println("Encerrando o programa.");
                     return;
-                }
-                default -> System.out.println("Opção inválida. Tente novamente.");
+                default:
+                    System.out.println("Opção inválida. Tente novamente.");
+                    break;
             }
         }
     }
