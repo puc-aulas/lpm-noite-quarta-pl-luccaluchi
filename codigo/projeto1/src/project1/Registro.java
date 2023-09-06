@@ -6,7 +6,6 @@ import java.util.Scanner;
 
 public class Registro {
 
-
     private List<Aluguel> alugueis = new ArrayList<Aluguel>();
     private List<Cliente> clientes = new ArrayList<Cliente>();
     private List<Equipamento> equipamentos = new ArrayList<Equipamento>();
@@ -52,9 +51,13 @@ public class Registro {
 
         public Cliente addCliente() {
 
+            Scanner s = new Scanner(System.in);
+            String nome;
             int idCliente = this.clientes.size() + 1;
+            nome = s.nextLine();
             System.out.println("Cliente criado com o código: " + idCliente);
-            return new Cliente(idCliente);
+
+            return new Cliente(idCliente, nome);
         }
         public Equipamento addEquipamento() {
             String tipo, descricao;
@@ -97,7 +100,6 @@ public class Registro {
             String dataTerminoDoAluguel;
             List<Aluguel> alugueisFeitos = new ArrayList<>();
 
-
             System.out.println("Código do cliente: ");
             int codCliente = s.nextInt();
             for (Cliente buscaCliente : clientes) {
@@ -122,6 +124,7 @@ public class Registro {
             int id = alugueis.size() + 1;
 
             Aluguel novoAluguel = new Aluguel(id, cliente, equipamento, dataInicioDoAluguel, dataTerminoDoAluguel);
+          //int id, Cliente cliente, Equipamento equipamento, String dataInicioDoAluguel, String dataTerminoDoAluguel
 
             alugueisFeitos.add(novoAluguel);
 
