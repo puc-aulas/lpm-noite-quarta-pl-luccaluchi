@@ -6,10 +6,10 @@ public class Equipamento {
     private int codigo = 0;
     private String tipo;
     private String descricao;
-    private float valorDiaria;
+    private double valorDiaria;
     private int quantidade;
 
-    public Equipamento(int codigo, String tipo, String descricao, float valorDiaria, int quantidade) {
+    public Equipamento(int codigo, String tipo, String descricao, double valorDiaria, int quantidade) {
         this.codigo = codigo;
         this.tipo = tipo;
         this.descricao = descricao;
@@ -42,7 +42,7 @@ public class Equipamento {
         this.descricao = descricao;
     }
 
-    public float getValorDiaria() {
+    public double getValorDiaria() {
         return valorDiaria;
     }
 
