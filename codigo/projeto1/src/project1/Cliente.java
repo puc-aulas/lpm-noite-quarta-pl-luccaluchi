@@ -1,5 +1,6 @@
 package project1;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Cliente {
@@ -8,9 +9,10 @@ public class Cliente {
     private int idCliente = 0;
     private List<Aluguel> alugueisFeitos;
 
+
     public Cliente(int idCliente) {
         this.idCliente = idCliente;
-        //proximoId++;
+        alugueisFeitos = new ArrayList<>();
     }
 
     public int getIdCliente() {

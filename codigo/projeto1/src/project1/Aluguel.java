@@ -5,15 +5,15 @@ import java.util.List;
 public class Aluguel {
     
     private static int proximoId = 1;
-    private int idAluguel = 0;
+    private int idAluguel;
     private Cliente cliente;
     private Equipamento equipamento;
     private String dataInicioDoAluguel;
     private String dataTerminoDoAluguel;
-    private float valorTotal;
+    private double valorTotal;
 
-    public Aluguel(Cliente cliente, Equipamento equipamento, String dataInicioDoAluguel, String dataTerminoDoAluguel) {
-        this.idAluguel = proximoId;
+    public Aluguel(int id, Cliente cliente, Equipamento equipamento, String dataInicioDoAluguel, String dataTerminoDoAluguel) {
+        this.idAluguel = id;
         this.cliente = cliente;
         this.equipamento = equipamento;
         this.dataInicioDoAluguel = dataInicioDoAluguel;
@@ -70,7 +70,7 @@ public class Aluguel {
         this.dataTerminoDoAluguel = dataTerminoDoAluguel;
     }
 
-    public float getValorTotal() {
+    public double getValorTotal() {
         return valorTotal;
     }
 

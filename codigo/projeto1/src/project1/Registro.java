@@ -12,16 +12,10 @@ public class Registro {
     private List<Equipamento> equipamentos = new ArrayList<Equipamento>();
     Scanner s = new Scanner(System.in);
 
-
-
     public static void main(String[] args) throws Exception {
-/*
-        List<Aluguel> alugueis = new ArrayList<Aluguel>();
-        List<Cliente> clientes = new ArrayList<Cliente>();
-        List<Equipamento> equipamentos = new ArrayList<Equipamento>();
+        Registro registro = new Registro();
 
         while (true) {
-
             Scanner s = new Scanner(System.in);
 
             System.out.println("Escolha uma operação:");
@@ -34,33 +28,22 @@ public class Registro {
             int escolha = s.nextInt();
 
             switch (escolha) {
-                case 1:
-                    getAlugueisPorCliente();
-                    break;
-                case 2:
-
-                    alugueis.add(alugarEquipamento());
-                    break;
-                case 3:
-                    clientes.add(addCliente());
-                    break;
-                case 4:
-                    equipamentos.add(addEquipamento());
-                    break;
-                case 5:
+                case 1 -> registro.getAlugueisPorCliente();
+                case 2 -> registro.alugueis.add(registro.alugarEquipamento());
+                case 3 -> registro.clientes.add(registro.addCliente());
+                case 4 -> registro.equipamentos.add(registro.addEquipamento());
+                case 5 -> {
                     System.out.println("Encerrando o programa.");
                     return;
-                default:
-                    System.out.println("Opção inválida. Tente novamente.");
-                    break;
+                }
+                default -> System.out.println("Opção inválida. Tente novamente.");
             }
-*/
         }
-
+    }
 
         public Cliente addCliente() {
 
-            int idCliente = this.clientes.size();
+            int idCliente = this.clientes.size() + 1;
             System.out.println("Cliente criado com o código: " + idCliente);
             return new Cliente(idCliente);
         }
@@ -71,14 +54,20 @@ public class Registro {
 
             System.out.println("Código: ");
             codigo = s.nextInt();
+            s.nextLine();
             System.out.println("Tipo: ");
             tipo = s.nextLine();
+            s.nextLine();
             System.out.println("Descrição: ");
             descricao = s.nextLine();
+            s.nextLine();
             System.out.println("Valor da diária: ");
             valorDiaria = s.nextFloat();
+            s.nextLine();
             System.out.println("Quantidade: ");
             quantidade = s.nextInt();
+            s.nextLine();
+
 
             for (Equipamento equipamento : equipamentos) {
                 if (equipamento.getCodigo() == codigo) {
@@ -87,7 +76,7 @@ public class Registro {
                 }
             }
 
-            codigo = this.equipamentos.size();
+            codigo = this.equipamentos.size() + 1;
 
             return new Equipamento(codigo, tipo, descricao, valorDiaria, quantidade);
         }
@@ -97,6 +86,8 @@ public class Registro {
             Equipamento equipamento = null;
             String dataInicioDoAluguel;
             String dataTerminoDoAluguel;
+            List<Aluguel> alugueisFeitos = new ArrayList<>();
+
 
             System.out.println("Código do cliente: ");
             int codCliente = s.nextInt();
@@ -114,12 +105,15 @@ public class Registro {
             }
             System.out.println("Data de início(padrão dd/mm/aaaa): ");
             dataInicioDoAluguel = s.nextLine();
+            s.nextLine();
             System.out.println("Data de término(padrão dd/mm/aaaa): ");
             dataTerminoDoAluguel = s.nextLine();
+            s.nextLine();
 
-            Aluguel novoAluguel = new Aluguel(cliente, equipamento, dataInicioDoAluguel, dataTerminoDoAluguel);
+            int id = alugueis.size() + 1;
 
-            List<Aluguel> alugueisFeitos = cliente.getAlugueisFeitos();
+            Aluguel novoAluguel = new Aluguel(id, cliente, equipamento, dataInicioDoAluguel, dataTerminoDoAluguel);
+
             alugueisFeitos.add(novoAluguel);
 
             cliente.setAlugueisFeitos(alugueisFeitos);
@@ -131,9 +125,10 @@ public class Registro {
 
             System.out.println("Código do cliente: ");
             int codCliente = s.nextInt();
-            for (Cliente buscaCliente : clientes) {
-                if (buscaCliente.getIdCliente() == codCliente) {
-                    for (Aluguel aluguel : alugueis) {
+            for (Cliente clienteBuscado : clientes) {
+                if (clienteBuscado.getIdCliente() == codCliente) {
+                    List<Aluguel> alugueisFeitos = new ArrayList<>(clienteBuscado.getAlugueisFeitos());
+                        for (Aluguel aluguel : alugueisFeitos){
                         System.out.println("Id: " + aluguel.getIdAluguel());
                         System.out.println("Início: " + aluguel.getDataInicioDoAluguel());
                         System.out.println("Término: " + aluguel.getDataTerminoDoAluguel());
