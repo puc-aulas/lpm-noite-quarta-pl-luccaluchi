@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Registro {
-
     private List<Aluguel> alugueis = new ArrayList<Aluguel>();
     private List<Cliente> clientes = new ArrayList<Cliente>();
     private List<Equipamento> equipamentos = new ArrayList<Equipamento>();

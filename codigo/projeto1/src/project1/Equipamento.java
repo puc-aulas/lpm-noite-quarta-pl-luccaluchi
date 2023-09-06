@@ -1,8 +1,7 @@
 package project1;
 
 public class Equipamento {
-    
-    private static int proximoCodigo = 1;
+    private static int proximoCodigo = 0;
     private int codigo = 0;
     private String tipo;
     private String descricao;
@@ -15,7 +14,7 @@ public class Equipamento {
         this.descricao = descricao;
         this.valorDiaria = valorDiaria;
         this.quantidade = quantidade;
-        //proximoCodigo++;
+        this.codigo = proximoCodigo++;
     }
 
     public int getCodigo() {
@@ -25,7 +24,7 @@ public class Equipamento {
     public void setCodigo(int codigo) {
         this.codigo = codigo;
     }
-    
+
     public String getTipo() {
         return tipo;
     }
