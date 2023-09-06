@@ -9,13 +9,13 @@ public class Equipamento {
     private float valorDiaria;
     private int quantidade;
 
-    public Equipamento(String tipo, String descricao, float valorDiaria, int quantidade) {
-        this.codigo = proximoCodigo;
+    public Equipamento(int codigo, String tipo, String descricao, float valorDiaria, int quantidade) {
+        this.codigo = codigo;
         this.tipo = tipo;
         this.descricao = descricao;
         this.valorDiaria = valorDiaria;
         this.quantidade = quantidade;
-        proximoCodigo++;
+        //proximoCodigo++;
     }
 
     public int getCodigo() {

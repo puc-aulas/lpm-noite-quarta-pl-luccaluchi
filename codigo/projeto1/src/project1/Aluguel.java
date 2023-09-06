@@ -1,5 +1,7 @@
 package project1;
 
+import java.util.List;
+
 public class Aluguel {
     
     private static int proximoId = 1;
@@ -17,6 +19,15 @@ public class Aluguel {
         this.dataInicioDoAluguel = dataInicioDoAluguel;
         this.dataTerminoDoAluguel = dataTerminoDoAluguel;
         proximoId++;
+    }
+
+    public double calcularValorDoAluguel(List<Equipamento> equipamentos, int id){
+
+        for(Equipamento equipamento : equipamentos)
+            if( equipamento.getCodigo() == id ){
+                return equipamento.getValorDiaria();
+            }
+        return 0;
     }
 
     public int getIdAluguel() {
