@@ -20,10 +20,19 @@ public class Equipamento {
 
     public void subtrairQuantidade(int quantidade) {
         this.quantidade -= quantidade;
+
     }
 
     public void somarQuantidade(int quantidade) {
         this.quantidade += quantidade;
+    }
+
+    public Boolean verificarDisponibilidade(int quantidadeSolicitada) {
+        if (this.quantidade - quantidadeSolicitada < 0) {
+            System.out.println("Não há equipamentos suficientes para realizar o aluguel");
+            return Boolean.FALSE;
+        }
+        return Boolean.TRUE;
     }
 
     public int getQuantidade() {
@@ -45,6 +54,10 @@ public class Equipamento {
 
     public double getValorDiaria() {
         return valorDiaria;
+    }
+
+    public void setQuantidade(int quantidade) {
+        this.quantidade = quantidade;
     }
 
 }

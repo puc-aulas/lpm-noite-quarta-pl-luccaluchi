@@ -1,5 +1,7 @@
 package org.example.input;
 
+import java.time.LocalDate;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Scanner;
 
@@ -7,8 +9,8 @@ public class InputAluguel {
     private int idCliente;
     private int idEquipamento;
     private int quantidade;
-    private Date dataInicio;
-    private Date dataTermino;
+    private LocalDate dataInicio;
+    private LocalDate dataTermino;
 
     public InputAluguel() {
         Scanner scanner = new Scanner(System.in);
@@ -19,17 +21,19 @@ public class InputAluguel {
         System.out.println("Quantidade: ");
         this.quantidade = scanner.nextInt();
         System.out.println("Data de início(dd/mm/aaaa):");
-        this.dataInicio = stringToDate(scanner.nextLine());
         scanner.nextLine();
+        this.dataInicio = stringToDate(scanner.nextLine());
+
         System.out.println("Data de término(dd/mm/aaaa): ");
+
         this.dataTermino = stringToDate(scanner.nextLine());
     }
-    public Date stringToDate(String data) {
+    public LocalDate stringToDate(String data) {
         String[] dataSplit = data.split("/");
         int dia = Integer.parseInt(dataSplit[0]);
         int mes = Integer.parseInt(dataSplit[1]);
         int ano = Integer.parseInt(dataSplit[2]);
-        return new Date(ano, mes, dia);
+        return LocalDate.of(ano, mes, dia);
     }
 
     public int getIdCliente() {
@@ -44,10 +48,10 @@ public class InputAluguel {
         return quantidade;
     }
 
-    public Date getDataInicio() {
+    public LocalDate getDataInicio() {
         return dataInicio;
     }
-    public Date getDataTermino() {
+    public LocalDate getDataTermino() {
         return dataTermino;
     }
 }

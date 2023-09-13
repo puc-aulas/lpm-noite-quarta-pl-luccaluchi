@@ -1,10 +1,7 @@
 package org.example;
 
-import org.example.input.InputCliente;
-import org.example.input.InputEquipamento;
-
+import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public class Data {
@@ -23,9 +20,9 @@ public void dadosIniciaisClientes() {
         equipamentos.add(new Equipamento("Teste 02", "Descrição 02", 10, 1));
         equipamentos.add(new Equipamento("Teste 03", "Descrição 03", 10, 1));
 
-        alugueis.add( new Aluguel(getCliente(1), getEquipamento(1), new Date(2021, 1, 1), new Date(2021, 1, 2)));
-        alugueis.add( new Aluguel(getCliente(2), getEquipamento(2), new Date(2021, 1, 1), new Date(2021, 1, 3)));
-        alugueis.add( new Aluguel(getCliente(3), getEquipamento(3), new Date(2021, 1, 1), new Date(2021, 1, 4)));
+        alugueis.add( new Aluguel(getCliente(1), getEquipamento(1), 1, LocalDate.of(2021, 1, 1), LocalDate.of(2021, 1, 2)));
+        alugueis.add( new Aluguel(getCliente(2), getEquipamento(2), 2, LocalDate.of(2021, 1, 1), LocalDate.of(2021, 1, 3)));
+        alugueis.add( new Aluguel(getCliente(3), getEquipamento(3), 3, LocalDate.of(2021, 1, 1), LocalDate.of(2021, 1, 4)));
     }
 
     //Editar os add's
@@ -58,6 +55,14 @@ public void dadosIniciaisClientes() {
             }
         }
         return null;
+    }
+
+    public void atualizarQuantidade(int idEquipamento, int quantidade){
+        for (Equipamento equipamentoBuscado : equipamentos) {
+            if (equipamentoBuscado.getIdEquipamento() == idEquipamento) {
+                equipamentoBuscado.setQuantidade(quantidade);
+            }
+        }
     }
 
 

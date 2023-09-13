@@ -51,12 +51,18 @@ public class Registro {
                 case 3:
                     // Aluguel(cliente, equipamento, dataInicioDoAluguel, dataTerminoDoAluguel)
                     InputAluguel inputAluguel = new InputAluguel();
-                    Aluguel aluguel = new Aluguel(database.getCliente(inputAluguel.getIdCliente()),
-                            database.getEquipamento(inputAluguel.getIdEquipamento()),
-                            inputAluguel.getDataInicio(),
-                            inputAluguel.getDataTermino());
-                    database.addAluguel(aluguel);
-                    System.out.println("Aluguel criado com sucesso!");
+                    if (database.getEquipamento(inputAluguel.getIdEquipamento()).verificarDisponibilidade(inputAluguel.getQuantidade())) {
+                        Aluguel aluguel = new Aluguel(database.getCliente(inputAluguel.getIdCliente()),
+                                database.getEquipamento(inputAluguel.getIdEquipamento()), inputAluguel.getQuantidade(),
+                                inputAluguel.getDataInicio(),
+                                inputAluguel.getDataTermino());
+                        database.atualizarQuantidade(aluguel.getEquipamento().getIdEquipamento(), +(aluguel.getQuantidade()));
+                        database.addAluguel(aluguel);
+                        System.out.println("Aluguel criado com sucesso!");
+                        }
+                    else {
+                        System.out.println("Não foi possível realizar o aluguel.");
+                    }
                     break;
                 case 4:
                     System.out.println("Case 4");

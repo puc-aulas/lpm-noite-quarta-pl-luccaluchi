@@ -1,5 +1,7 @@
 package org.example;
 
+import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import java.util.Date;
 
 public class Aluguel {
@@ -7,11 +9,12 @@ public class Aluguel {
     private int idAluguel;
     private Cliente cliente;
     private Equipamento equipamento;
-    private Date dataInicioDoAluguel;
-    private Date dataTerminoDoAluguel;
+    private int quantidade;
+    private LocalDate dataInicioDoAluguel;
+    private LocalDate dataTerminoDoAluguel;
     private double valorTotal;
 
-    public Aluguel(Cliente cliente, Equipamento equipamento, Date dataInicioDoAluguel, Date dataTerminoDoAluguel) {
+    public Aluguel(Cliente cliente, Equipamento equipamento,int quantidade, LocalDate dataInicioDoAluguel, LocalDate dataTerminoDoAluguel) {
         this.idAluguel = proximoId;
         this.cliente = cliente;
         this.equipamento = equipamento;
@@ -21,15 +24,17 @@ public class Aluguel {
         Aluguel.proximoId++;
     }
 
-    public int calcularNumeroDeDias(Date dataInicioDoAluguel, Date dataTerminoDoAluguel) {
-        long diferenca = dataTerminoDoAluguel.getTime() - dataInicioDoAluguel.getTime();
+    public int calcularNumeroDeDias(LocalDate dataInicioDoAluguel, LocalDate dataTerminoDoAluguel) {
+        long diferenca = ChronoUnit.DAYS.between(dataInicioDoAluguel, dataTerminoDoAluguel);
         if (diferenca < 0) {
             throw new IllegalArgumentException("A data de término do aluguel não pode ser anterior à data de início.");
         }
-        return (int) (diferenca / (1000 * 60 * 60 * 24));
+        return (int) diferenca;
+
     }
 
-     public double calcularValorDoAluguel(Date dataInicioDoAluguel, Date dataTerminoDoAluguel) {
+
+     public double calcularValorDoAluguel(LocalDate dataInicioDoAluguel, LocalDate dataTerminoDoAluguel) {
          int numeroDeDias = calcularNumeroDeDias(dataInicioDoAluguel, dataTerminoDoAluguel);
          return numeroDeDias * equipamento.getValorDiaria();
      }
@@ -46,15 +51,19 @@ public class Aluguel {
         return equipamento;
     }
 
-    public Date getDataInicioDoAluguel() {
+    public LocalDate getDataInicioDoAluguel() {
         return dataInicioDoAluguel;
     }
 
-    public Date getDataTerminoDoAluguel() {
+    public LocalDate getDataTerminoDoAluguel() {
         return dataTerminoDoAluguel;
     }
 
     public double getValorTotal() {
         return valorTotal;
+    }
+
+    public int getQuantidade() {
+        return quantidade;
     }
 }
