@@ -13,8 +13,10 @@ public class InputAtualizaEquipamento {
         System.out.println("Digite a quantidade: ");
         this.quantidade = scanner.nextInt();
     }
-
+/*
     public int getId() {
         return idEquipamento;
     }
+
+ */
 }

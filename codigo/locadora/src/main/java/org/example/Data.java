@@ -60,12 +60,8 @@ public void dadosIniciaisClientes() {
     public void atualizarQuantidade(int idEquipamento, int quantidade){
         for (Equipamento equipamentoBuscado : equipamentos) {
             if (equipamentoBuscado.getIdEquipamento() == idEquipamento) {
-                if (quantidade < 0){
-                    equipamentoBuscado.subtrairQuantidade(quantidade);
-                }
-                else {
-                    equipamentoBuscado.somarQuantidade(quantidade);
-                }
+                    equipamentoBuscado.modificarQuantidade(quantidade);
+
             }
         }
     }

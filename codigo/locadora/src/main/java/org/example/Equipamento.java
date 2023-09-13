@@ -18,13 +18,8 @@ public class Equipamento {
         Equipamento.proximoId++;
     }
 
-    public void subtrairQuantidade(int quantidade) {
-        this.quantidade -= quantidade;
-
-    }
-
-    public void somarQuantidade(int quantidade) {
-        this.quantidade += quantidade;
+    public void modificarQuantidade(int quantidade) {
+        this.quantidade = this.quantidade + quantidade;
     }
 
     public Boolean verificarDisponibilidade(int quantidadeSolicitada) {
