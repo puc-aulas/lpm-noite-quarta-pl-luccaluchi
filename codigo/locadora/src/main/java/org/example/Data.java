@@ -26,19 +26,19 @@ public void dadosIniciaisClientes() {
         equipamentos.add(new Equipamento("Teste 03", "Descrição 03", 3, 3));
     }
 
-    public void addEquipamento(String tipo, String descricao, double valorDiaria, int quantidade) {
-        Equipamento equipamento = new Equipamento(tipo, descricao, valorDiaria, quantidade);
+    //Editar os add's
+    public void addEquipamento(Equipamento equipamento) {
         Data.equipamentos.add(equipamento);
     }
-    public void addAluguel(Cliente cliente, Equipamento equipamento, int quantidade, int dias) {
-        Aluguel aluguel = new Aluguel(cliente, equipamento, quantidade, dias);
+
+    public void addCliente(Cliente cliente){
+        Data.clientes.add(cliente);
+    }
+
+    public void addAluguel(Aluguel aluguel) {
         Data.alugueis.add(aluguel);
     }
 
-    public void addCliente(String nome){
-        Cliente cliente = new Cliente(nome);
-        Data.clientes.add(cliente);
-    }
 
     public Cliente getCliente(int idCliente) {
         for (Cliente cliente : clientes) {

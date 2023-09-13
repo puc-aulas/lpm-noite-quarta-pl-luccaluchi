@@ -1,9 +1,11 @@
 package org.example;
 
+import org.example.input.InputAluguel;
 import org.example.input.InputCliente;
 import org.example.input.InputEquipamento;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
 
@@ -34,15 +36,24 @@ public class Registro {
             switch (escolha) {
                 case 1:
                     InputEquipamento newInputEquipamento = new InputEquipamento();
-                    database.addEquipamento(newInputEquipamento.getTipo(), newInputEquipamento.getDescricao(), newInputEquipamento.getValorDiaria(), newInputEquipamento.getQuantidade());
+                    Equipamento equipamento = new Equipamento(newInputEquipamento.getTipo(), newInputEquipamento.getDescricao(), newInputEquipamento.getValorDiaria(), newInputEquipamento.getQuantidade());
+                    database.addEquipamento(equipamento);
                     System.out.println("Equipamento cadastrado com sucesso!");
                     break;
                 case 2:
                     InputCliente newInputCliente = new InputCliente();
-                    database.addCliente(newInputCliente.getNome());
+                    Cliente cliente = new Cliente(newInputCliente.getNome());
+                    database.addCliente(cliente);
                     System.out.println("Cliente cadastrado com sucesso!");
                     break;
                 case 3:
+                    // Aluguel(cliente, equipamento, dataInicioDoAluguel, dataTerminoDoAluguel)
+                    InputAluguel inputAluguel = new InputAluguel();
+                    Aluguel aluguel = new Aluguel(database.getCliente(inputAluguel.getIdCliente()),
+                            database.getEquipamento(inputAluguel.getIdEquipamento()),
+                            inputAluguel.getDataInicio(),
+                            inputAluguel.getDataTermino());
+                    database.addAluguel(aluguel);
                     System.out.println("Aluguel criado com sucesso!");
                     break;
                 case 4:
