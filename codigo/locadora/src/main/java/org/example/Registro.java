@@ -1,9 +1,6 @@
 package org.example;
 
-import org.example.input.InputAluguel;
-import org.example.input.InputAtualizaEquipamento;
-import org.example.input.InputCliente;
-import org.example.input.InputEquipamento;
+import org.example.input.*;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -58,7 +55,7 @@ public class Registro {
                                 database.getEquipamento(inputAluguel.getIdEquipamento()), inputAluguel.getQuantidade(),
                                 inputAluguel.getDataInicio(),
                                 inputAluguel.getDataTermino());
-                        database.atualizarQuantidade(aluguel.getEquipamento().getIdEquipamento(), (-1 * (aluguel.getQuantidade())));
+                        database.atualizarQuantidade(aluguel.getEquipamento().getIdEquipamento(), (- aluguel.getQuantidade()));
                         database.addAluguel(aluguel);
                         System.out.println("Aluguel criado com sucesso!");
                         }
@@ -67,6 +64,8 @@ public class Registro {
                     }
                     break;
                 case 4:
+                    InputListarPorCliente.inputListarPorCliente();
+                    listarAlugueisPorCliente(InputListarPorCliente.idCliente);
                     System.out.println("Case 4");
                     break;
                 case 5:
@@ -119,7 +118,6 @@ public class Registro {
     }
 
 
-
     public static void listarClientes() {
         if (Data.clientes.isEmpty()) {
             System.out.println("Não há clientes cadastrados.");
@@ -133,6 +131,7 @@ public class Registro {
         System.out.println();
     }
 
+
     public static void listarAlugueis() {
         if (Data.alugueis.isEmpty()) {
             System.out.println("Não há alugueis cadastrados.");
@@ -143,9 +142,30 @@ public class Registro {
             System.out.print("Id: " + aluguel.getIdAluguel() + "\t|\t");
             System.out.print("Cliente: " + aluguel.getCliente().getNome() + "\t|\t");
             System.out.print("Equipamento: " + aluguel.getEquipamento().getTipo() + "\t|\t");
+            System.out.print("Quantidade: " + aluguel.getQuantidade() + "\t|\t");
             System.out.print("Data de início: " + aluguel.getDataInicioDoAluguel() + "\t|\t");
             System.out.print("Data de término: " + aluguel.getDataTerminoDoAluguel() + "\t|\t");
             System.out.println("Valor total: " + aluguel.getValorTotal());
+        }
+        System.out.println();
+    }
+
+    public static void listarAlugueisPorCliente(int idCliente) {
+        if (Data.alugueis.isEmpty()) {
+            System.out.println("Não há alugueis cadastrados.");
+            return;
+        }
+        System.out.println(" Lista de alugueis: ");
+        for (Aluguel aluguel : Data.alugueis) {
+            if (aluguel.getCliente().getIdCliente() == idCliente) {
+                System.out.print("Id: " + aluguel.getIdAluguel() + "\t|\t");
+                System.out.print("Cliente: " + aluguel.getCliente().getNome() + "\t|\t");
+                System.out.print("Equipamento: " + aluguel.getEquipamento().getTipo() + "\t|\t");
+                System.out.print("Quantidade: " + aluguel.getQuantidade() + "\t|\t");
+                System.out.print("Data de início: " + aluguel.getDataInicioDoAluguel() + "\t|\t");
+                System.out.print("Data de término: " + aluguel.getDataTerminoDoAluguel() + "\t|\t");
+                System.out.println("Valor total: " + aluguel.getValorTotal());
+            }
         }
         System.out.println();
     }

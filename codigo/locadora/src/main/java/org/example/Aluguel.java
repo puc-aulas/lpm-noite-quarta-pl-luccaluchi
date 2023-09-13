@@ -18,6 +18,7 @@ public class Aluguel {
         this.idAluguel = proximoId;
         this.cliente = cliente;
         this.equipamento = equipamento;
+        this.quantidade = quantidade;
         this.dataInicioDoAluguel = dataInicioDoAluguel;
         this.dataTerminoDoAluguel = dataTerminoDoAluguel;
         this.valorTotal = calcularValorDoAluguel(dataInicioDoAluguel, dataTerminoDoAluguel);
