@@ -1,6 +1,7 @@
 package org.example;
 
 import org.example.input.InputAluguel;
+import org.example.input.InputAtualizaEquipamento;
 import org.example.input.InputCliente;
 import org.example.input.InputEquipamento;
 
@@ -56,7 +57,7 @@ public class Registro {
                                 database.getEquipamento(inputAluguel.getIdEquipamento()), inputAluguel.getQuantidade(),
                                 inputAluguel.getDataInicio(),
                                 inputAluguel.getDataTermino());
-                        database.atualizarQuantidade(aluguel.getEquipamento().getIdEquipamento(), +(aluguel.getQuantidade()));
+                        database.atualizarQuantidade(aluguel.getEquipamento().getIdEquipamento(), (-1 * (aluguel.getQuantidade())));
                         database.addAluguel(aluguel);
                         System.out.println("Aluguel criado com sucesso!");
                         }
@@ -80,6 +81,12 @@ public class Registro {
                     System.out.println("Encerrando o programa.");
                     executa = Boolean.FALSE;
                     break;
+                case 9:
+                   InputAtualizaEquipamento inputAtualizaEquipamento = new InputAtualizaEquipamento();
+                    if (database.getEquipamento(inputAtualizaEquipamento.getId()) != null){
+                        database.atualizarQuantidade(inputAtualizaEquipamento.getId(), +(inputAtualizaEquipamento.quantidade));
+                }
+
                 default:
                     System.out.println("Opção inválida. Tente novamente.");
                     break;
