@@ -17,6 +17,7 @@ public class Registro {
 
     public static void main(String[] args) {
         Data database = new Data();
+        database.dadosIniciaisClientes();
 
         while (executa) {
             System.out.println("Escolha uma operação:");
@@ -26,7 +27,8 @@ public class Registro {
             System.out.println("4. Listar alugueis por cliente");
             System.out.println("5. Listar equipamentos");
             System.out.println("6. Listar clientes");
-            System.out.println("7. Sair");
+            System.out.println("7. Listar alugueis");
+            System.out.println("8. Sair");
             System.out.println("-> ");
 
             Scanner scanner = new Scanner(System.in);
@@ -66,6 +68,9 @@ public class Registro {
                     listarClientes();
                     break;
                 case 7:
+                    listarAlugueis();
+                    break;
+                case 8:
                     System.out.println("Encerrando o programa.");
                     executa = Boolean.FALSE;
                     break;
@@ -107,6 +112,23 @@ public class Registro {
         for (Cliente cliente : Data.clientes) {
             System.out.print("Id: " + cliente.getIdCliente() + "\t|\t");
             System.out.println("Nome: " + cliente.getNome());
+        }
+        System.out.println();
+    }
+
+    public static void listarAlugueis() {
+        if (Data.alugueis.isEmpty()) {
+            System.out.println("Não há alugueis cadastrados.");
+            return;
+        }
+        System.out.println(" Lista de alugueis: ");
+        for (Aluguel aluguel : Data.alugueis) {
+            System.out.print("Id: " + aluguel.getIdAluguel() + "\t|\t");
+            System.out.print("Cliente: " + aluguel.getCliente().getNome() + "\t|\t");
+            System.out.print("Equipamento: " + aluguel.getEquipamento().getTipo() + "\t|\t");
+            System.out.print("Data de início: " + aluguel.getDataInicioDoAluguel() + "\t|\t");
+            System.out.print("Data de término: " + aluguel.getDataTerminoDoAluguel() + "\t|\t");
+            System.out.println("Valor total: " + aluguel.getValorTotal());
         }
         System.out.println();
     }

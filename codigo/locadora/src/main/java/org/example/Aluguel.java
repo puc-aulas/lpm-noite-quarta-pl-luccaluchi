@@ -34,5 +34,27 @@ public class Aluguel {
          return numeroDeDias * equipamento.getValorDiaria();
      }
 
+    public int getIdAluguel() {
+        return idAluguel;
+    }
 
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public Equipamento getEquipamento() {
+        return equipamento;
+    }
+
+    public Date getDataInicioDoAluguel() {
+        return dataInicioDoAluguel;
+    }
+
+    public Date getDataTerminoDoAluguel() {
+        return dataTerminoDoAluguel;
+    }
+
+    public double getValorTotal() {
+        return valorTotal;
+    }
 }
