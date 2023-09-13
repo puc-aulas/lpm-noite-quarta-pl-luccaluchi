@@ -9,17 +9,12 @@ import java.util.Scanner;
 
 public class Registro {
 
-    private static List<Aluguel> alugueis = new ArrayList<Aluguel>();
-    private static List<Cliente> clientes = new ArrayList<Cliente>();
-    private static List<Equipamento> equipamentos = new ArrayList<Equipamento>();
+
     private static Boolean executa = Boolean.TRUE;
 
 
     public static void main(String[] args) {
-
-        equipamentos.addAll(Data.getDataEquipamentos());
-        clientes.addAll(Data.getDataClientes());
-
+        Data database = new Data();
 
         while (executa) {
             System.out.println("Escolha uma operação:");
@@ -33,22 +28,24 @@ public class Registro {
             System.out.println("-> ");
 
             Scanner scanner = new Scanner(System.in);
+
             int escolha = scanner.nextInt();
 
             switch (escolha) {
                 case 1:
-                    addEquipamento();
+                    InputEquipamento newInputEquipamento = new InputEquipamento();
+                    database.addEquipamento(newInputEquipamento.getTipo(), newInputEquipamento.getDescricao(), newInputEquipamento.getValorDiaria(), newInputEquipamento.getQuantidade());
                     System.out.println("Equipamento cadastrado com sucesso!");
                     break;
                 case 2:
-                    addCliente();
+                    InputCliente newInputCliente = new InputCliente();
+                    database.addCliente(newInputCliente.getNome());
                     System.out.println("Cliente cadastrado com sucesso!");
                     break;
                 case 3:
                     System.out.println("Aluguel criado com sucesso!");
                     break;
                 case 4:
-
                     System.out.println("Case 4");
                     break;
                 case 5:
@@ -68,36 +65,17 @@ public class Registro {
         }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     }
 
-    public static void addEquipamento(){
-        InputEquipamento newInput = new InputEquipamento();
-        Equipamento equipamento = new Equipamento(newInput.getTipo(), newInput.getDescricao(), newInput.getValorDiaria(), newInput.getQuantidade());
-        Registro.equipamentos.add(equipamento);
-    }
+
 
     public static void listarEquipamentos() {
-
-        if (equipamentos.isEmpty()) {
+        if (Data.equipamentos.isEmpty()) {
             System.out.println("Não há equipamentos cadastrados.");
             return;
         }
         System.out.println(" Lista de equipamentos: ");
-        for (Equipamento equipamento : equipamentos) {
+        for (Equipamento equipamento : Data.equipamentos) {
             System.out.print("Id: " + equipamento.getIdEquipamento() + "\t|\t");
             System.out.print("Tipo: " + equipamento.getTipo() + "\t|\t");
             System.out.print("Valor da diária: " + equipamento.getValorDiaria() + "\t|\t");
@@ -107,20 +85,15 @@ public class Registro {
         System.out.println();
     }
 
-    public static void addCliente(){
-        InputCliente newInput = new InputCliente();
-        Cliente cliente = new Cliente(newInput.getNome());
-        Registro.clientes.add(cliente);
-    }
+
 
     public static void listarClientes() {
-
-        if (clientes.isEmpty()) {
+        if (Data.clientes.isEmpty()) {
             System.out.println("Não há clientes cadastrados.");
             return;
         }
         System.out.println(" Lista de clientes: ");
-        for (Cliente cliente : clientes) {
+        for (Cliente cliente : Data.clientes) {
             System.out.print("Id: " + cliente.getIdCliente() + "\t|\t");
             System.out.println("Nome: " + cliente.getNome());
         }
