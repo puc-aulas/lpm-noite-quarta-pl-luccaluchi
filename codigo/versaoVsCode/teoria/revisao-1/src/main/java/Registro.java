@@ -2,9 +2,6 @@ package org.example;
 
 import org.example.input.*;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
 import java.util.Scanner;
 
 public class Registro {
@@ -39,13 +36,13 @@ public class Registro {
                 case 1:
                     InputEquipamento newInputEquipamento = new InputEquipamento();
                     Equipamento equipamento = new Equipamento(newInputEquipamento.getTipo(), newInputEquipamento.getDescricao(), newInputEquipamento.getValorDiaria(), newInputEquipamento.getQuantidade());
-                    database.addEquipamento(equipamento);
+                    Data.addEquipamento(equipamento);
                     System.out.println("Equipamento cadastrado com sucesso!");
                     break;
                 case 2:
                     InputCliente newInputCliente = new InputCliente();
                     Cliente cliente = new Cliente(newInputCliente.getNome());
-                    database.addCliente(cliente);
+                    Data.addCliente(cliente);
                     System.out.println("Cliente cadastrado com sucesso!");
                     break;
                 case 3:
@@ -56,7 +53,7 @@ public class Registro {
                                 database.getEquipamento(inputAluguel.getIdEquipamento()), inputAluguel.getQuantidade(),
                                 inputAluguel.getDataInicio(),
                                 inputAluguel.getDataTermino());
-                        database.atualizarQuantidade(aluguel.getEquipamento().getIdEquipamento(), (- aluguel.getQuantidade()));
+                        Data.atualizarQuantidade(aluguel.getEquipamento().getIdEquipamento(), (- aluguel.getQuantidade()));
                         database.addAluguel(aluguel);
                         System.out.println("Aluguel criado com sucesso!");
                         }
@@ -84,7 +81,7 @@ public class Registro {
                 case 9:
                     InputAtualizaEquipamento inputAtualizaEquipamento = new InputAtualizaEquipamento();
                     if (database.getEquipamento(inputAtualizaEquipamento.idEquipamento) != null){
-                        database.atualizarQuantidade(inputAtualizaEquipamento.idEquipamento, inputAtualizaEquipamento.quantidade);
+                        Data.atualizarQuantidade(inputAtualizaEquipamento.idEquipamento, inputAtualizaEquipamento.quantidade);
                     }
                     else {
                         System.out.println("Equipamento não encontrado.");
