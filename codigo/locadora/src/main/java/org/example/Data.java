@@ -22,15 +22,15 @@ public void dadosIniciaisClientes() {
 
         alugueis.add( new Aluguel(getCliente(1), getEquipamento(1), 1, LocalDate.of(2021, 1, 1), LocalDate.of(2021, 1, 2)));
         alugueis.add( new Aluguel(getCliente(2), getEquipamento(2), 2, LocalDate.of(2021, 1, 1), LocalDate.of(2021, 1, 3)));
-        alugueis.add( new Aluguel(getCliente(3), getEquipamento(3), 3, LocalDate.of(2021, 1, 1), LocalDate.of(2021, 1, 4)));
+        alugueis.add( new Aluguel(getCliente(3), getEquipamento(3), 3, LocalDate.of(2021, 2, 1), LocalDate.of(2021, 3, 4)));
     }
 
     //Editar os add's
-    public void addEquipamento(Equipamento equipamento) {
+    public static void addEquipamento(Equipamento equipamento) {
         Data.equipamentos.add(equipamento);
     }
 
-    public void addCliente(Cliente cliente){
+    public static void addCliente(Cliente cliente){
         Data.clientes.add(cliente);
     }
 
@@ -57,7 +57,7 @@ public void dadosIniciaisClientes() {
         return null;
     }
 
-    public void atualizarQuantidade(int idEquipamento, int quantidade){
+    public static void atualizarQuantidade(int idEquipamento, int quantidade){
         for (Equipamento equipamentoBuscado : equipamentos) {
             if (equipamentoBuscado.getIdEquipamento() == idEquipamento) {
                     equipamentoBuscado.modificarQuantidade(quantidade);

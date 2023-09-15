@@ -1,4 +1,4 @@
-package org.exemple;
+package org.example;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -12,7 +12,7 @@ public class DataTest {
         Data.addEquipamento(equipamento);
 
         Assertions.assertEquals(4, Data.equipamentos.size());
-        Assertions.assertEquals("Equipamento teste", Data.equipamentos.get(3).getNome());
+        Assertions.assertEquals("Equipamento teste", Data.equipamentos.get(3));
     }
 
     @Test

@@ -1,13 +1,15 @@
-package org.exemple;
+package org.example;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+
+import java.time.LocalDate;
 
 public class AluguelTest {
 
     @Test
     public void deveCalcularOValorDoAluguelCorretamente() {
-        Cliente cliente = new Cliente("João da Silva", "123.456.789-00");
+        Cliente cliente = new Cliente("João da Silva");
         Equipamento equipamento = new Equipamento("TV", 100.00);
         LocalDate dataInicioDoAluguel = LocalDate.now();
         LocalDate dataTerminoDoAluguel = dataInicioDoAluguel.plusDays(2);

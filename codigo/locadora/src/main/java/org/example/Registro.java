@@ -26,8 +26,9 @@ public class Registro {
             System.out.println("5. Listar equipamentos");
             System.out.println("6. Listar clientes");
             System.out.println("7. Listar alugueis");
-            System.out.println("8. Modificar quantidade de equipamento");
-            System.out.println("9. Sair");
+            System.out.println("8. Listar alugueis por mês" );
+            System.out.println("9. Modificar quantidade de equipamento");
+            System.out.println("10. Sair");
             System.out.println("-> ");
 
             Scanner scanner = new Scanner(System.in);
@@ -78,6 +79,9 @@ public class Registro {
                     listarAlugueis();
                     break;
                 case 8:
+                    SearchRentByMonth.searchRentByMonth();
+                    break;
+                case 9:
                     InputAtualizaEquipamento inputAtualizaEquipamento = new InputAtualizaEquipamento();
                     if (database.getEquipamento(inputAtualizaEquipamento.idEquipamento) != null){
                         database.atualizarQuantidade(inputAtualizaEquipamento.idEquipamento, inputAtualizaEquipamento.quantidade);
@@ -86,7 +90,7 @@ public class Registro {
                         System.out.println("Equipamento não encontrado.");
                     }
                     break;
-                case 9:
+                case 10:
                     System.out.println("Encerrando o programa.");
                     executa = Boolean.FALSE;
                     break;
