@@ -2,6 +2,7 @@ package com.locadora;
 
 public class Cliente {
 
+// Optou-se pelo uso da variável static para gerenciar o número dos ids para que os ids sejam sequenciais, náo se repitam.
     private static int proximoId = 0;
     private int idCliente = 0;
     private String nome;
@@ -26,6 +27,7 @@ public class Cliente {
         this.nome = nome;
     }
 
+// O método toString() é um método especial que retorna uma representação em String do objeto.
     @Override
     public String toString() {
         String returnString = "Cliente " + this.idCliente + 1;

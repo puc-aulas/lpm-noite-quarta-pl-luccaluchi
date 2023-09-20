@@ -9,6 +9,7 @@ public class Registro {
     private static int idGenerator = 0;
     private int idRegistro;
 
+// Listas para armazenar os objetos criados(Aluguel, Cliente, Equipamento)
     private List<Aluguel> alugueis;
     private List<Cliente> clientes;
     private List<Equipamento> equipamentos;
@@ -20,6 +21,8 @@ public class Registro {
         this.equipamentos = new ArrayList<Equipamento>();
     }
 
+// Método para alugar equipamentos, recebe o id de equipamento, id de cliente, quantidade, data de início e data de término
+// do aluguel. Formata as datas para LocalDate, cria o aluguel e adiciona à lista de alugueis, atualiza a quantidade de equipamentos
     public Aluguel alugarEquipamento(int equipamentoId,
             int clienteId,
             int quantidade,

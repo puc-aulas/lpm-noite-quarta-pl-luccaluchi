@@ -24,11 +24,12 @@ public class Equipamento {
         this.idEquipamento = proximoId++;
         this.quantidade = quantidade;
     }
-
+// Método para adicionar equipamentos ao estoque
     public void modificarQuantidade(int quantidade) {
         this.quantidade = this.quantidade + quantidade;
     }
 
+// Método para verificar se há equipamentos suficientes para realizar o aluguel
     public Boolean verificarDisponibilidade(int quantidadeSolicitada) {
         if (this.quantidade - quantidadeSolicitada < 0) {
             System.out.println("Não há equipamentos suficientes para realizar o aluguel");
@@ -60,12 +61,13 @@ public class Equipamento {
     public void setQuantidade(int quantidade) {
         this.quantidade = quantidade;
     }
-
+// Método toString() para retornar uma representação em String do objeto.
     @Override
     public String toString() {
         return this.tipo;
     }
-
+    
+// Método show() para retornar uma representação em String do objeto.
     public String show() {
         String returnFormated = String.format(
                 "ID: %d\nTipo: %s\nDescrição: %s\nValor da diária: %.2f\nQuantidade: %d\n=====================================\n",

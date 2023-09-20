@@ -9,6 +9,7 @@ import com.locadora.Registro;
 
 public class RegistroTest {
 
+// Teste para verificar se o código está lançando a excessão de equipamento não encontrado.
     @Test
     public void throwCasoNaoExistaOEquipamento() {
         Exception exception = assertThrows(IllegalArgumentException.class, () -> {
@@ -22,6 +23,7 @@ public class RegistroTest {
         assertEquals(expectedMessage, actualMessage);
     }
 
+// Teste para verificar se o código está lançando a excessão de cliente não encontrado.
     @Test
     public void throwCasoNaoExistaOCliente() {
         Exception exception = assertThrows(IllegalArgumentException.class, () -> {
@@ -37,6 +39,7 @@ public class RegistroTest {
         assertEquals(expectedMessage, actualMessage);
     }
 
+// Teste para verificar se o código está lançando a excessão caso não haja equipamentos suficintes para o aluguel.
     @Test
     public void throwCasoNaoHajaQuantidadeSuficiente() {
         Exception exception = assertThrows(IllegalArgumentException.class, () -> {
@@ -54,6 +57,7 @@ public class RegistroTest {
         assertEquals(expectedMessage, actualMessage);
     }
 
+// Teste para verificar se o código está lançando a excessão caso a data de término seja anterior a data de início.
     @Test
     public void throwCasoDataDeTerminoSejaAnteriorADataDeInicio() {
         Exception exception = assertThrows(IllegalArgumentException.class, () -> {
@@ -71,6 +75,7 @@ public class RegistroTest {
         assertEquals(expectedMessage, actualMessage);
     }
 
+// Teste para verificar se os aluguel está recebendo os valores corretos checando os parâmetros passados no construtor pelos gets
     @Test
     public void deveRealizarOAluguelCorretamente() {
         Registro sut = new Registro();
@@ -85,6 +90,8 @@ public class RegistroTest {
         assertEquals(3, sut.getEquipamentos().get(0).getQuantidade());
     }
 
+// Teste para verificar se a lista de alugueis está sendo criada corretamente. Verificando se o tamanho da lista retornada está do
+// tamanho esperado para o número de alugueis criados para o devido cliente.
     @Test
     public void deveListarApenasOsAlugueisDoCliente() {
         Registro sut = new Registro();
@@ -107,6 +114,9 @@ public class RegistroTest {
         assertEquals(1, sut.alugueisPorIdCliente(1).size());
     }
 
+// Teste para verificar se a lista de alugueis está sendo criada corretamente. Verificando se o tamanho da lista retornada está do
+// tamanho esperado para o número de alugueis criados para o mês simulado. Verficica também a se a soma dos alugueis daquele mês
+// corresponde ao resultado esperado.
     @Test
     public void deveListarApenasOsAlugueisDoMesEFaturamento() {
         Registro sut = new Registro();

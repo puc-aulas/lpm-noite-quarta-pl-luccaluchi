@@ -11,6 +11,7 @@ import com.locadora.Equipamento;
 
 public class AluguelTest {
 
+// Teste para verificar se o método calcular valor do aluguel está retornando o número de dias corretamente.
     @Test
     public void deveCalcularOValorDoAluguelCorretamente() {
         Cliente cliente = new Cliente("João da Silva");
@@ -26,6 +27,7 @@ public class AluguelTest {
         assertEquals(expectedTotal, aluguel.getValorTotal(), 0.001);
     }
 
+// Teste para verificar se a validação da data de término ser maior que a de início está funcionando corretamente.
     @Test
     public void deveLancarExcecaoSeADataDeTerminoForAnteriorADataDeInicio() {
         Cliente cliente = new Cliente("João da Silva");

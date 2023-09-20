@@ -38,6 +38,8 @@ public class App {
 
             int escolha = scanner.nextInt();
 
+// Menu de opções para interação com o usuário
+ 
             switch (escolha) {
                 case 0: // Inserir dados iniciais
                     insertInicialData(locadora);
